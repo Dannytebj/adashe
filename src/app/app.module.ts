@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+// Firbase Imports
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+// Components Import
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ClientsComponent } from './components/clients/clients.component';
@@ -14,12 +19,22 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+//  Services Imports
+import { ClientService } from './services/client.service';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
 ];
+
+const firebaseConfig = {
+    apiKey: 'AIzaSyAQCQt6wjjh60nW5yz17rePqbvVcpSl0AY',
+    authDomain: 'adashe-9ef20.firebaseapp.com',
+    databaseURL: 'https://adashe-9ef20.firebaseio.com',
+    storageBucket: 'adashe-9ef20.appspot.com',
+    messagingSenderId: '1089695271256'
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +52,14 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [
+    AngularFireAuth,
+    AngularFireDatabase,
+    ClientService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
