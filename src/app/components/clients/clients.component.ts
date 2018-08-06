@@ -19,7 +19,6 @@ totalOwed: number;
     .subscribe(clients => {
       this.clients = clients;
       this.getTotalOwed();
-      console.log(clients);
     });
   }
 
@@ -29,7 +28,6 @@ totalOwed: number;
       total += parseFloat(this.clients[i].balance);
     }
     this.totalOwed = total;
-    console.log(this.totalOwed);
   }
 
 }
