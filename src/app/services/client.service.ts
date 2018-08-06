@@ -28,4 +28,8 @@ client: FirebaseObjectObservable <any>;
    updateClient(id: string, client: Client) {
      return this.clients.update(id, client);
    }
+
+   deleteClient(id) {
+     return this.clients.remove(id);
+   }
 }

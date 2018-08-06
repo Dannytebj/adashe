@@ -37,7 +37,6 @@ export class AddClientComponent implements OnInit {
     if (!valid) {
       this.flash.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 4000 });
     } else {
-      console.log(value);
       this.clientService.createNewClient(value);
       this.flash.show('Client added successfully', {cssClass: 'alert-success', timeout: 4000 });
       this.router.navigate(['/']);
