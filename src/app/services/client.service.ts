@@ -20,4 +20,12 @@ client: FirebaseObjectObservable <any>;
    createNewClient (client: Client) {
      this.clients.push(client);
    }
+
+   getClient(id: string) {
+    return this.client = this.af.object(`/clients/${id}`) as FirebaseObjectObservable<Client>;
+   }
+
+   updateClient(id: string, client: Client) {
+     return this.clients.update(id, client);
+   }
 }
