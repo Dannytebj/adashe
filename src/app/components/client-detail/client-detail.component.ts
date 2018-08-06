@@ -36,5 +36,12 @@ showBalanceUpdateInput: boolean;
     this.flashMessage.show('Balance updated successfully', { cssClass: 'alert-success', timeout: 4000 });
     this.router.navigate(['/client/' + this.id]);
   }
+  deleteClient() {
+    if (confirm('Are you sure you want to delete client?')) {
+      this.clientService.deleteClient(this.id);
+      this.flashMessage.show('client deleted', { cssClass: 'alert-success', timeout: 4000 });
+      this.router.navigate(['/']);
+    }
+  }
 
 }
