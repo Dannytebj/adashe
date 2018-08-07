@@ -23,14 +23,17 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 //  Services Imports
 import { ClientService } from './services/client.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
+
 
 const appRoutes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'add-client', component: AddClientComponent },
-  { path: 'client/:id', component: ClientDetailComponent },
-  { path: 'edit-client/:id', component: EditClientComponent }
+  { path: 'add-client', component: AddClientComponent , canActivate: [AuthGuard]},
+  { path: 'client/:id', component: ClientDetailComponent, canActivate: [AuthGuard] },
+  { path: 'edit-client/:id', component: EditClientComponent, canActivate: [AuthGuard] }
 ];
 
 const firebaseConfig = {
@@ -39,7 +42,7 @@ const firebaseConfig = {
     databaseURL: 'https://adashe-9ef20.firebaseio.com',
     storageBucket: 'adashe-9ef20.appspot.com',
     messagingSenderId: '1089695271256'
-}
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +69,8 @@ const firebaseConfig = {
     AngularFireAuth,
     AngularFireDatabase,
     ClientService,
+    AuthGuard,
+    AuthService,
     FlashMessagesService
   ],
   bootstrap: [AppComponent]
