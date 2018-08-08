@@ -3,6 +3,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import 'rxjs/add/operator/map';
+import { SettingsService } from '../../services/settings.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -15,6 +16,7 @@ showRegister: boolean;
   constructor(
     private authService: AuthService,
     private flashMessages: FlashMessagesService,
+    public settingService: SettingsService,
     private router: Router
   ) { }
 
@@ -26,6 +28,7 @@ showRegister: boolean;
       } else {
         this.isLoggedIn = false;
       }
+     this.showRegister = this.settingService.getSettings().allowRegistration;
     });
   }
 
