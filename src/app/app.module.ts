@@ -25,15 +25,19 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ClientService } from './services/client.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { SettingsService } from './services/settings.service';
+import { RegisterGuard } from './services/register-guard.service';
 
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'add-client', component: AddClientComponent , canActivate: [AuthGuard]},
   { path: 'client/:id', component: ClientDetailComponent, canActivate: [AuthGuard] },
-  { path: 'edit-client/:id', component: EditClientComponent, canActivate: [AuthGuard] }
+  { path: 'edit-client/:id', component: EditClientComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 const firebaseConfig = {
@@ -71,6 +75,8 @@ const firebaseConfig = {
     ClientService,
     AuthGuard,
     AuthService,
+    SettingsService,
+    RegisterGuard,
     FlashMessagesService
   ],
   bootstrap: [AppComponent]

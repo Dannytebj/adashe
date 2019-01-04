@@ -3,6 +3,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Client } from '../../models/Clients';
 import { ClientService } from '../../services/client.service';
+import { SettingsService } from '../../services/settings.service';
 @Component({
   selector: 'app-edit-client',
   templateUrl: './edit-client.component.html',
@@ -23,11 +24,13 @@ disableBalance = true;
     public clientService: ClientService,
     public flashMessage: FlashMessagesService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public settingService: SettingsService
   ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
+    this.disableBalance = this.settingService.getSettings().disableBalanceOnEdit;
     this.clientService.getClient(this.id)
     .subscribe(client => {
       this.client = client;

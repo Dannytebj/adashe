@@ -2,8 +2,10 @@
   <h5 class="my-0 mr-md-auto font-weight-normal">Adashe</h5>
   <nav class="my-2 my-md-0 mr-md-3">
     <a *ngIf="isLoggedIn" class="p-2 text-dark" href="#" routerLink="">Dashboard</a>
-    <a *ngIf="!isLoggedIn" class="p-2 text-dark" href="#" routerLink="/login">Login</a>
+    <a *ngIf="isLoggedIn" class="p-2 text-dark" href="#">{{ loggedInUser }}</a>
+    <a *ngIf="!isLoggedIn && showRegister" class="p-2 text-dark" href="#" routerLink="/login">Login</a>
+    <a *ngIf="isLoggedIn" class="p-2 text-dark" href="#" routerLink="/settings">Settings</a>
   </nav>
-  <a *ngIf="!isLoggedIn" class="btn btn-outline-primary" href="#" routerLink="/register">Register</a>
+  <a *ngIf="!isLoggedIn && showRegister" class="btn btn-outline-primary" href="#" routerLink="/register">Register</a>
   <a *ngIf="isLoggedIn" class="btn btn-outline-primary" href="#" (click)="onLogoutClick()">Logout</a>
 </div>
