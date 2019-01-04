@@ -27,5 +27,3 @@ settings: Settings;
     this.router.navigate(['/settings']);
   }
   }
-
-}

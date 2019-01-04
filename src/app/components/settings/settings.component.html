@@ -9,31 +9,50 @@
   <div class="card-block add-padding">
     <form (submit)="onSubmit()">
       <div class="form-group">
-        <label>Allow Registration</label>
-        <input
-          type="checkbox"
-          [checked]="settings.allowRegistration"
-          (change)="settings.allowRegistration = !settings.allowRegistration"
-          name="allowRegistration"
-        >
+        <div class="toggle-option">
+            <p>Allow Registration</p>
+
+            <label class="toggle">
+              <input
+                type="checkbox"
+                [checked]="settings.allowRegistration"
+                (change)="settings.allowRegistration = !settings.allowRegistration"
+                name="allowRegistration"
+              >
+              <span class="toggler round"></span>
+          </label>
+        </div>
       </div>
+
       <div class="form-group">
-        <label>Disable Balance On Add</label>
-        <input
-          type="checkbox"
-          [checked]="settings.disableBalanceOnAdd"
-          (change)="settings.disableBalanceOnAdd = !settings.disableBalanceOnAdd"
-          name="disableBalanceOnAdd"
-        >
+        <div class="toggle-option">
+          <p>Disable Balance On Add</p>
+            <label class="toggle">
+              <input
+                type="checkbox"
+                [checked]="settings.disableBalanceOnAdd"
+                (change)="settings.disableBalanceOnAdd = !settings.disableBalanceOnAdd"
+                name="disableBalanceOnAdd"
+              >
+              <span class="toggler round"></span>
+            </label>
+        </div>
       </div>
+
       <div class="form-group">
-        <label>Disable Balance On Edit</label>
-        <input
-          type="checkbox"
-          [checked]="settings.disableBalanceOnEdit"
-          (change)="settings.disableBalanceOnEdit = !settings.disableBalanceOnEdit"
-          name="disableBalanceOnEdit"
-        >
+        <div class="toggle-option">
+          <p>Disable Balance On Edit</p>
+
+          <label class="toggle">
+            <input
+              type="checkbox"
+              [checked]="settings.disableBalanceOnEdit"
+              (change)="settings.disableBalanceOnEdit = !settings.disableBalanceOnEdit"
+              name="disableBalanceOnEdit"
+            >
+            <span class="toggler round"></span>
+          </label>
+        </div>
       </div>
       <input type="submit" class="btn btn-primary btn-block" value="Update">
     </form>
